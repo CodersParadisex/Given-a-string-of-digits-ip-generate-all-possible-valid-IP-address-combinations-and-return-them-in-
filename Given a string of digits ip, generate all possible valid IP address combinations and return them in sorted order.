@@ -1,0 +1,22 @@
+#Q. Given a string of digits ip, generate all possible valid IP address combinations and return them in sorted order.
+
+ip = "2542230123"
+
+res=[]
+for i in range(3):
+        a=int(ip[:i+1])
+        if a>255 or str(a)!=ip[:i+1]:
+                break
+        for j in range(i+1,i+4):
+                b=int(ip[i+1:j+1])
+                if b>255 or str(b) !=ip[i+1:j+1]:
+                        break
+                for k in range(j+1,len(ip)-1):
+                        c=int(ip[j+1:k+1])
+                        if c>255 or str(c) != ip[j+1:k+1]:
+                                continue
+                        d=int(ip[k+1:])
+                        if d>255 or str(d) != ip[k+1:]:
+                                continue
+                        res.append(str(a)+"."+str(b)+"."+str(c)+"."+str(d))
+print(res)
